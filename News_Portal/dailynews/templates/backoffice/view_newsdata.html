@@ -1,0 +1,93 @@
+{% extends 'backoffice/base.html'%}
+{% block tittle  %} Category {% endblock tittle%}
+{% block admin_name  %} {{admin_name}} {% endblock admin_name%}
+{% block content_block%} 
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>List of NewsData</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a>Home</a></li>
+              <li class="breadcrumb-item active">DataTables</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                {% if News_data %}
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>News Title</th>
+                    <th>News Category</th>
+                    <th>News Source</th>
+                    <th>Image</th>
+                    <th>Source</th>
+                    <th>Created_data</th>
+                    <th>News_Status</th>
+                    <th>News Urls</th>
+                    <th>Action</th>
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                    {% for value in News_data %}
+                      <tr>
+                        <td>{{ value.tittle }}</td>
+                        <td>{{value.category.category_name}}
+                        </td>
+                        <!-- <td>{%if cat_data.category_status == 1 %}{{"Active"}} {%else%} {{"Inactive"}} {%endif%}</td> -->
+                        <!-- <td>{{cat_data.cat_created_date}}</td> -->
+                         <td>{{value.source}}</td>
+                         <td><a href="/{{value.image}}" target="_blank"><img src="/{{value.image}}" height="10" weight="50" /></a></td>
+                        <td>{{value.source}}</td>
+                        <td>{{value.created_date|date:"d M, Y"}}</td>
+                        <td>{{value.news_status}}</td>
+                        <td><a href="{{value.url_slug}}">News Url</a></td>
+                        <td>
+                          <a href="/backoffice/delete_newsdata/{{value.id}}" class="btn-btn dangr">Delete</a>
+                          <a href="/backoffice/edit_newsdata/{{value.id}}" class="btn-btn dangr">Edit</a>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>News Title</th>
+                    <th>News Category</th>
+                    <th>News Source</th>
+                    <th>Image</th>
+                    <th>News Content</th>
+                    <th>Created_data</th>
+                    <th>News_Status</th>
+                    <th>Urls</th>
+                    <th>Action</th>
+                  </tr>
+                  </tfoot>
+                </table>
+                {% endif %}
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+{% endblock content_block%}

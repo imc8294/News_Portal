@@ -1,0 +1,105 @@
+{% extends 'backoffice/base.html'%}
+{% block tittle  %} {% if cat %} Edit {% else %} Add {% endif%} Display {% endblock tittle%}
+{% block admin_name  %} {{admin_name}} {% endblock admin_name%}
+{% block content_block%}
+<section class="content">
+    <div class="container-fluid">
+        Search Data
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+              <!-- general form elements -->
+              <div class="card card-primary">
+                <form action="/backoffice/submitSearchData" method="post" id="search-form">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>First Date:</label>
+                                    <div class="input-group date">
+                                        <input type="date" class="form-control datetimepicker-input" name = "start_date" id="start_date" required>
+                                    </div>
+                                    <span class="start_date_error" style="color: red;"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Last Date:</label>
+                                    <div class="input-group date">
+                                        <input type="date" class="form-control datetimepicker-input" name = "last_date" id="last_date" required>
+                                    </div>
+                                    <span class="end_date_error" style="color: red;"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">KeyWord</label>
+                                    <input type="text" class="form-control" id="keyword" name="keyword" placeholder="KeyWord">
+                                    <span class="keyword_error" style="color: red;"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <button type="button" id="submitSearchButton" class="btn btn-primary" style="margin-top: 30px;">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                  </div> 
+                </form>
+              </div>
+              <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Keyword History</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Keyword</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Last Run</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% if keyword_data %}
+                        {% for key_value in keyword_data%}
+                            <tr>
+                                <td>{{ key_value.keyword}}</td>
+                                <td>{{ key_value.search_start_date}}</td>
+                                <td>{{ key_value.search_end_date}}</td>
+                                <td>
+                                    <form action="/updateCounting" method="post" id="search-form">
+                                        {% csrf_token %}
+                                        <input type="hidden" value="{{ key_value.id}}" name="id">
+                                        <input type="number" value="{{ key_value.last_run_counting }}" name="last_run_counting">
+                                        <input type="submit" name="Update" value="Update">
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor%}
+                    {% endif %}
+                </tbody>
+                <tfoot>
+                    <th>Keyword</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Last Run</th>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+    </div>
+</section>
+
+{% endblock content_block%}

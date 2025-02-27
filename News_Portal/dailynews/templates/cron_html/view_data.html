@@ -1,0 +1,68 @@
+{% extends 'backoffice/base.html'%}
+{% block title  %} All Domain Details {% endblock title%}
+{% block admin_name  %} {{admin_name}} {% endblock admin_name%}
+{% block page_title  %} Domain Page  {% endblock page_title%}
+{% block active_title  %} All Domain Details  {% endblock active_title%}
+{% block body%}
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Domain ALl Details</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Domain Name</th>
+                  <th>Registrar</th>
+                  <th>Organization Name</th>
+                  <th>Domain Created Date</th>
+                  <th>Domain Updated Date</th>
+                  <th>Domain Expire Date</th>
+                  <th>Address</th>
+                  <th>Country</th>
+                  <th>City</th>
+                  <th>Zipcode</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% if domain_data %}
+                        {% for domain_value in domain_data%}
+                            <tr>
+                            <td>{{ domain_value.domain_name}}</td>
+                            <td>{{ domain_value.registrar}}</td>
+                            <td>{{ domain_value.organization_name}}</td>
+                            <td>{{ domain_value.domain_created_date }}</td>
+                            <td>{{ domain_value.domain_updated_date}}</td>
+                            <td>{{ domain_value.domain_expire_date}}</td>
+                            <td>{{ domain_value.address}}</td>
+                            <td> {{ domain_value.country}}</td>
+                            <td>{{ domain_value.city}}</td>
+                            <td>{{ domain_value.zipcode}}</td>
+                            </tr>
+                        {% endfor%}
+                    {% endif %}
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>Domain Name</th>
+                    <th>Registrar</th>
+                    <th>Organization Name</th>
+                    <th>Domain Created Date</th>
+                    <th>Domain Updated Date</th>
+                    <th>Domain Expire Date</th>
+                    <th>Address</th>
+                    <th>Country</th>
+                    <th>City</th>
+                    <th>Zipcode</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+    </div>
+</section>
+{% endblock body%}

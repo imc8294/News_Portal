@@ -1,0 +1,303 @@
+{% extends 'frontend/base_home.html'%}
+{% block main_body %} 
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-7 px-0">
+                    <div class="owl-carousel main-carousel position-relative">
+                        {% for data in section_1%}
+                            
+                            <div class="position-relative overflow-hidden" style="height: 500px;">
+                                <img class="img-fluid h-100" src="{{data.image}}" style="object-fit: cover;">
+                                <div class="overlay">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                            href="{{data.news_url}}" target="_blank">{{ data.category.category_name}}</a>
+                                        <a class="text-white" target="_blank" href="{{data.news_url}}">{{data.created_date|date:"M d, Y"}}</a>
+                                    </div>
+                                    <a class="h2 m-0 text-white text-uppercase font-weight-bold" target="_blank" href="{{data.news_url}}">{{data.tittle}}</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-5 px-0">
+                    <div class="row mx-0">
+                        {% for data in section_2%}
+                            <div class="col-md-6 px-0">
+                                <div class="position-relative overflow-hidden" style="height: 250px;">
+                                    <img class="img-fluid w-100 h-100" src="{{data.image}}" style="object-fit: cover;">
+                                    <div class="overlay">
+                                        <div class="mb-2">
+                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                                href="{{data.news_url}}" target="_blank">{{ data.category.category_name}}</a>
+                                            <a class="text-white" target="_blank" href="{{data.news_url}}"><small>{{data.created_date|date:"M d, Y"}}</small></a>
+                                        </div>
+                                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" target="_blank" href="{{data.news_url}}">{{data.tittle}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured News Slider Start -->
+        <div class="container-fluid pt-5 mb-3">
+            <div class="container">
+                <div class="section-title">
+                    <h4 class="m-0 text-uppercase font-weight-bold">Featured News</h4>
+                </div>
+                <div class="owl-carousel news-carousel carousel-item-4 position-relative">
+                    {% for data in section_3%}
+                        <div class="position-relative overflow-hidden" style="height: 300px;">
+                            <img class="img-fluid h-100" src="{{data.image}}" style="object-fit: cover;">
+                            <div class="overlay">
+                                <div class="mb-2">
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        href="{{data.news_url}}">{{data.category.category_name}}</a>
+                                    <a class="text-white" target="_blank" href="data.news_url"><small>{{data.created_date|date:"M d, Y"}}</small></a>
+                                </div>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{data.news_url}}">{{data.tittle}}</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- Featured News Slider End -->
+
+        <!-- News With Sidebar Start -->
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="section-title">
+                                    <h4 class="m-0 text-uppercase font-weight-bold">Latest News</h4>
+                                    <a class="text-secondary font-weight-medium text-decoration-none" href="javascript:void(0)">View All</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                {% for data in section_4%}
+                                    <div class="position-relative mb-3">
+                                            <img class="img-fluid w-100" src="{{data.image}}" style="object-fit: cover;">
+                                            <div class="bg-white border border-top-0 p-4">
+                                                <div class="mb-2">
+                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                                        href="{{data.news_url}}">{{data.category.category_name}}</a>
+                                                    <a class="text-body" target="_blank" href="{{data.news_url}}"><small>{{data.created_date|date:"M d, Y"}}</small></a>
+                                                </div>
+                                                <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="data.news_url">{{data.tittle}}</a>
+                                            </div>
+                                    </div>
+                                {% endfor %}    
+                            </div>
+                            <div class="col-lg-6">
+                                {% for data in section_5 %}
+                                    <div class="position-relative mb-3">
+                                            <img class="img-fluid w-100" src="{{data.image}}" style="object-fit: cover;">
+                                            <div class="bg-white border border-top-0 p-4">
+                                                <div class="mb-2">
+                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                                        href="{{data.news_url}}">{{data.category.category_name}}</a>
+                                                    <a class="text-body" href="{{data.news_url}}"><small>{{data.created_date|date:"M d, Y"}}</small></a>
+                                                </div>
+                                                <a class="h4 d-block mb-0 text-secondary text-uppercase font-weight-bold" href="{{data.news_url}}">{{data.tittle}}</a>
+                                            </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-lg-6">
+                                {% for data in section_6 %}
+                                    <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                        <img class="img-fluid" src="{{data.image}}" alt="" style="width: 100px; height: 100px; object-fit: cover;">
+                                        <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                            <div class="mb-2">
+                                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{data.news_url}}">{{data.category.category_name}}</a>
+                                                <a class="text-body" href="{{data.news_url}}"><small>{{data.created_date|date:"M d, Y"}}</small></a>
+                                            </div>
+                                            <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{data.news_url}}">{{data.tittle|truncatechars:30}}</a>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-lg-6">
+                                {% for data in section_7%}    
+                                    <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                        <img class="img-fluid" src="{{data.image}}" alt="" style="width: 100px; height: 100px; object-fit: cover;">
+                                        <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                            <div class="mb-2">
+                                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{data.news_url}}">{{data.category.category_name}}</a>
+                                                <a class="text-body" href="{{data.news_url}}"><small>{{data.created_date|date:"M d, Y"}}</small></a>
+                                            </div>
+                                            <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{data.news_url}}">{{data.tittle|truncatechars:30}}</a>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-lg-12">
+                                {% for data in section_8 %}
+                                    <div class="row news-lg mx-0 mb-3">
+                                        <div class="col-md-6 h-100 px-0">
+                                            <img class="img-fluid h-100" src={{data.image}} style="object-fit: cover;">
+                                        </div>
+                                        <div class="col-md-6 d-flex flex-column border bg-white h-100 px-0">
+                                            <div class="mt-auto p-4">
+                                                <div class="mb-2">
+                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                                        href="{{data.news_url}}">{{data.category.category_name}}</a>
+                                                    <a class="text-body" href="javascript:void(0)"><small>{{data.created_date|date:"M d, Y"}}</small></a>
+                                                </div>
+                                                <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="{{data.news_url}}">{{data.tittle}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}    
+                            </div>
+                            <div class="col-lg-6">
+                                {% for data in section_10 %}
+                                    <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                        <img class="img-fluid" src={{data.image}} alt="" style="width: 100px; height: 100px; object-fit: cover;">
+                                        <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                            <div class="mb-2">
+                                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="javascript:void(0)">{{data.category.category_name}}</a>
+                                                <a class="text-body" href="javascript:void(0)"><small>{{data.created_date|date:"M d, Y"}}</small></a>
+                                            </div>
+                                            <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href={{data.news_url}}>{{data.tittle|truncatechars:35}}</a>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-lg-6">
+                                {% for data in section_11 %}
+                                    <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                        <img class="img-fluid" src={{data.image}} alt="" style="width: 100px; height: 100px; object-fit: cover;" >
+                                        <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                            <div class="mb-2">
+                                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="javascript:void(0)">{{data.category.category_name}}</a>
+                                                <a class="text-body" href="javascript:void(0)"><small>{{data.created_date|date:"M d, Y"}}</small></a>
+                                            </div>
+                                            <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" target="_blank" href={{data.news_url}}>{{data.tittle|truncatechars:30}}</a>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <!-- Social Follow Start -->
+                        <div class="mb-3">
+                            <div class="section-title mb-0">
+                                <h4 class="m-0 text-uppercase font-weight-bold">Follow Us</h4>
+                            </div>
+                            <div class="bg-white border border-top-0 p-3">
+                                <a href="javascript:void(0)" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
+                                    <i class="fab fa-facebook-f text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                    <span class="font-weight-medium">Available soon...</span>
+                                </a>
+                                <a href="javascript:void(0)" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
+                                    <i class="fab fa-twitter text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                    <span class="font-weight-medium">Available soon...</span>
+                                </a>
+                                <a href="javascript:void(0)" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
+                                    <i class="fab fa-linkedin-in text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                    <span class="font-weight-medium">Available soon...</span>
+                                </a>
+                                <a href="javascript:void(0)" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
+                                    <i class="fab fa-instagram text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                    <span class="font-weight-medium">Available soon...</span>
+                                </a>
+                                <a href="javascript:void(0)" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #DC472E;">
+                                    <i class="fab fa-youtube text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                    <span class="font-weight-medium">Available soon...</span>
+                                </a>
+                                <a href="javascript:void(0)" class="d-block w-100 text-white text-decoration-none" style="background: #055570;">
+                                    <i class="fab fa-vimeo-v text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                    <span class="font-weight-medium">Available soon...</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Social Follow End -->
+
+                        <!-- Ads Start -->
+                        <div class="mb-3">
+                            <div class="section-title mb-0">
+                                <h4 class="m-0 text-uppercase font-weight-bold">Advertisement</h4>
+                            </div>
+                            <div class="bg-white text-center border border-top-0 p-3">
+                                <a href=""><img class="img-fluid" src="/statics/frontend/img/Advertisement.jpeg" alt=""></a>
+                            </div>
+                        </div>
+                        <!-- Ads End -->
+
+                        <!-- Popular News Start -->
+                        <div class="mb-3">
+                            <div class="section-title mb-0">
+                                <h4 class="m-0 text-uppercase font-weight-bold">Trending News</h4>
+                            </div>
+                            <div class="bg-white border border-top-0 p-3">
+                                {% for data in section_9 %}
+                                    <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                        <img class="img-fluid" src={{data.image}} alt="" style="width: 100px; height: 100px; object-fit: cover;">
+                                        <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                            <div class="mb-2">
+                                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="javascript:void(0)">{{data.category.category_name}}</a>
+                                                <a class="text-body" href="javascript:void(0)"><small>{{data.created_date|date:"M d, Y"}}</small></a>
+                                            </div>
+                                            <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" target="_blank" href="{{data.news_url}}">{{data.tittle|truncatechars:25}}</a>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!-- Popular News End -->
+
+                        <!-- Newsletter Start -->
+                        <div class="mb-3">
+                            <div class="section-title mb-0">
+                                <h4 class="m-0 text-uppercase font-weight-bold">Newsletter</h4>
+                            </div>
+                            <div class="bg-white text-center border border-top-0 p-3">
+                                <p>!! You can able to find your Newsletter !!</p>
+                                <div class="input-group mb-2" style="width: 100%;">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Your Email">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary font-weight-bold px-3">Sign Up</button>
+                                    </div>
+                                </div>
+                                <!-- <small>Lorem ipsum dolor sit amet elit</small> -->
+                            </div>
+                        </div>
+                        <!-- Newsletter End -->
+
+                        <!-- Tags Start -->
+                        <div class="mb-3">
+                            <div class="section-title mb-0">
+                                <h4 class="m-0 text-uppercase font-weight-bold">Tags</h4>
+                            </div>
+                            <div class="bg-white border border-top-0 p-3">
+                                <div class="d-flex flex-wrap m-n1">
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary m-1">Politics</a>
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary m-1">Business</a>
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary m-1">Corporate</a>
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary m-1">Business</a>
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary m-1">Health</a>
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary m-1">Education</a>
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary m-1">Science</a>
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary m-1">Business</a>
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary m-1">Foods</a>
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary m-1">Travel</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tags End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- News With Sidebar End -->
+
+{% endblock main_body %} 

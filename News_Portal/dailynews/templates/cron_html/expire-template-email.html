@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Expire Domain List</h2>
+
+<table>
+  <tr>
+    <th>Doamin Name</th>
+    <th>Registar</th>
+    <th>Domain Expire Date</th>
+  </tr>
+  {% if domain_data%}
+    {% for value in domain_data %}
+      <tr>
+        <td>{{value.domain_name}}</td>
+        <td>{{value.registrar}}</td>
+        <td>{{ value.domain_expire_date}}</td>
+      </tr>
+    {% endfor%}
+  {% endif %}
+ 
+</table>
+
+</body>
+</html>
+

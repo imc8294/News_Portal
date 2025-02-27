@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>DailyNews</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        
+        <!-- Favicon -->
+        <link href="/statics/frontend/img/favicon.ico" rel="icon">
+    
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+    
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    
+        <!-- Libraries Stylesheet -->
+        <link href="/statics/frontend/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="/statics/frontend/css/style.css" rel="stylesheet">
+    </head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid d-none d-lg-block">
+        <div class="row align-items-center bg-dark px-lg-5">
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-sm bg-dark p-0">
+                    <ul class="navbar-nav ml-n2">
+                        
+                        <li class="nav-item border-right border-secondary">
+                            <a class="nav-link text-body small" href="javascript:void(0)">Advertise</a>
+                        </li>
+                        <li class="nav-item border-right border-secondary">
+                            <a class="nav-link text-body small" href="javascript:void(0)">Contact</a>
+                        </li>
+                        <li class="nav-item border-right border-secondary">
+                            <a class="nav-link text-body small" href="javascript:void(0)">Login</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-body small" href="javascript:void(0)" id="currentDateTime"></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3 text-right d-none d-md-block">
+                <nav class="navbar navbar-expand-sm bg-dark p-0">
+                    <ul class="navbar-nav ml-auto mr-n2">
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="javascript:void(0)"><small class="fab fa-twitter"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="javascript:void(0)"><small class="fab fa-facebook-f"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="javascript:void(0)"><small class="fab fa-linkedin-in"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="javascript:void(0)"><small class="fab fa-instagram"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="javascript:void(0)"><small class="fab fa-google-plus-g"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="javascript:void(0)"><small class="fab fa-youtube"></small></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
+            <a href="dashboard" class="navbar-brand d-block d-lg-none">
+                <h1 class="m-0 display-4 text-uppercase text-primary">Biz<span class="text-white font-weight-normal">News</span></h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
+                <div class="navbar-nav mr-auto py-0">
+                    <!-- <a href="dashboard" class="nav-item nav-link active">Home</a> -->
+                    <!-- <a href="category" class="nav-item nav-link">Category</a>
+                    <a href="single" class="nav-item nav-link">Single News</a> -->
+                    <!-- <div class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="javascript:void(0)" class="dropdown-item">More</a>
+                            <a href="javascript:void(0)" class="dropdown-item">Login</a>
+                            <a href="contact" class="dropdown-item">Contact Us</a>
+                        </div>
+                    </div>
+                    <a href="contact" class="nav-item nav-link">Contact</a> -->
+                    
+                    <a href="{% url 'home_page' %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'home_page' %}active{% endif %}">Home</a>
+                    <a href="{% url 'category' %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'category' %}active{% endif %}">Category</a>
+                    <a href="{% url 'single' %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'single' %}active{% endif %}">Single News</a>
+                    <div class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="javascript:void(0)" class="dropdown-item">More</a>
+                            <a href="javascript:void(0)" class="dropdown-item">Login</a>
+                            <a href="{% url 'contact' %}" class="dropdown-item {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact Us</a>
+                        </div>
+                    </div>
+                    <a href="{% url 'contact' %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a>
+                    
+                </div>
+                <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
+                    <input type="text" class="form-control border-0" placeholder="Keyword">
+                    <div class="input-group-append">
+                        <button class="input-group-text bg-primary text-dark border-0 px-3"><i
+                                class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+    {% block main_body%}{% endblock main_body%}
+    {% block contact_body %}{% endblock contact_body%}
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark pt-5 px-sm-3 px-md-5 mt-5">
+        <div class="row py-4">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Get In Touch</h5>
+                <p class="font-weight-medium"><i class="fa fa-map-marker-alt mr-2"></i>Navi Mumbai, India</p>
+                <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>+0215 89475</p>
+                <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>imcportal@gmail.</p>
+                <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Follow Us</h6>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square" href="javascript:void(0)"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">About Us</h5>
+                <div class="mb-3">
+                    <!-- <div class="mb-2">
+
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                    </div>
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a> -->
+                    <p href="javascript:void(0)"><b>About</b></p>
+                </div>
+                <div class="mb-3">
+                    <!-- <div class="mb-2">
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                    </div>
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a> -->
+                <p href="javascript:void(0)"><b>Careers</b></p>
+                </div>
+                <div class="">
+                    <!-- <div class="mb-2">
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                    </div>
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a> -->
+                <p href="javascript:void(0)"><b>Contact Us</b></p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
+                <div class="m-n1">
+                    <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Entertainment</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Travel</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Lifestyle</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
+                    <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Advertisement images</h5>
+                <div class="row">
+                    <div class="col-4 mb-3">
+                        <a href=""><img class="w-100" src="/statics/frontend/img/zx10r.jpg" alt="" style="width: 100px; height: 100px; object-fit: cover;"></a>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <a href=""><img class="w-100" src="/statics/frontend/img/ola.jpg" alt="" style="width: 100px; height: 100px; object-fit: cover;"></a>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <a href=""><img class="w-100" src="/statics/frontend/img/Gwagon.jpg" alt="" style="width: 100px; height: 100px; object-fit: cover;"></a>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <a href=""><img class="w-100" src="/statics/frontend/img/make_m_t.jpg" alt="" style="width: 100px; height: 100px; object-fit: cover;"></a>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <a href=""><img class="w-100" src="/statics/frontend/img/bike_1.jpg" alt="" style="width: 100px; height: 100px; object-fit: cover;"></a>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <a href=""><img class="w-100" src="/statics/frontend/img/car_1.jpg" alt="" style="width: 100px; height: 100px; object-fit: cover;"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background-color: rgb(37, 35, 35); color: white; text-align: center; padding: 20px; font-family: Arial, sans-serif;">
+        <div style="max-width: 1200px; margin: auto;">
+            <p style="font-size: 20px; font-weight: bold;">NewsPortal &copy; 2025 | All Rights Reserved</p>
+            <p style="font-size: 14px;">Your Trusted Source for Daily News</p>
+            <div style="margin-top: 10px;">
+                <a href="javascript:void(0)" style="color: white; text-decoration: none; margin: 0 10px;">Home</a> |
+                <a href="javascript:void(0)" style="color: white; text-decoration: none; margin: 0 10px;">About Us</a> |
+                <a href="javascript:void(0)" style="color: white; text-decoration: none; margin: 0 10px;">Contact</a> |
+                <a href="javascript:void(0)" style="color: white; text-decoration: none; margin: 0 10px;">Privacy Policy</a>
+            </div>
+            <div style="margin-top: 15px;">
+                <!-- <a href="#" style="color: white; text-decoration: none; margin: 0 10px; font-size: 18px;">&#x1F426;</a>
+                <a href="#" style="color: white; text-decoration: none; margin: 0 10px; font-size: 18px;">&#x1F426;</a>
+                <a href="#" style="color: white; text-decoration: none; margin: 0 10px; font-size: 18px;">&#x1F426;</a> -->
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="/statics/frontend/lib/easing/easing.min.js"></script>
+    <script src="/statics/frontend/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/statics/frontend/js/main.js"></script>
+    <script>
+        function updateDateTime() {
+        const now = new Date();
+        const options = {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: false 
+        };
+        document.getElementById("currentDateTime").innerText = now.toLocaleString("en-GB", options);
+        }
+
+    setInterval(updateDateTime, 1000);
+    updateDateTime(); 
+    </script>
+</body>
+
+</html>
