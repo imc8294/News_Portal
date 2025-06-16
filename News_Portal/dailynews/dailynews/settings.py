@@ -81,10 +81,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dailynews',
-        'HOST': '127.0.0.1',
-        'PORT': '3310',
-        'USER': 'root',
-        'PASSWORD': 'Admin',
+        'HOST': 'newsportal.crkkwaumyfr9.ap-south-1.rds.amazonaws.com',
+        'PORT': '3306',
+        'USER': 'admin',
+        'PASSWORD': 'PASSWORD123'
     }
 }
 
